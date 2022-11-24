@@ -9,8 +9,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -21,11 +19,8 @@ public class EmployerController {
     private EmployerRepository employerRepository;
 
     @GetMapping("")
-    public String index (@ModelAttribute @Valid EmployerRepository employers, Errors errors, Model model){
+    public String index (@ModelAttribute @Valid EmployerRepository employer, Errors errors, Model model){
 
-        if (errors.hasErrors()){
-            model.addAttribute("errors", "No Jobs");
-        }
         model.addAttribute("employers", employerRepository.findAll());
         return "employers/index";
     }
