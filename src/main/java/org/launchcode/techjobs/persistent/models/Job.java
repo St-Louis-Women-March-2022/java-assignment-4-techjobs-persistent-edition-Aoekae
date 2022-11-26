@@ -4,46 +4,34 @@ import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-public class Job{
+public class Job extends AbstractEntity{
+    @ManyToOne
+    private Employer employer;
 
-    @Id
-    @GeneratedValue
-    private int id;
-
-    private String name;
-
-    private String employer;
     private String skills;
+
+//    private List<Skill> skills
 
     public Job() {
     }
 
-    public Job(String anEmployer, String someSkills) {
+    public Job(Employer anEmployer, String skills) {
         super();
         this.employer = anEmployer;
-        this.skills = someSkills;
+        this.skills = skills;
     }
 
-    // Getters and setters.
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmployer() {
+    public Employer getEmployer() {
         return employer;
     }
 
-    public void setEmployer(String employer) {
+    public void setEmployer(Employer employer) {
         this.employer = employer;
     }
 

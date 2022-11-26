@@ -47,7 +47,7 @@ public class SkillController {
 
     //displayViewSkill
 
-    //seems to be the problem here properly displaying in the form
+
     @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
 
