@@ -7,6 +7,7 @@ import javax.persistence.MappedSuperclass;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,14 +15,14 @@ public class Job extends AbstractEntity{
     @ManyToOne
     private Employer employer;
 
-    private String skills;
-
-//    private List<Skill> skills
+    @ManyToMany
+    @JoinColumn (name = "skills")
+    private List<Skill> skills;
 
     public Job() {
     }
 
-    public Job(Employer anEmployer, String skills) {
+    public Job(Employer anEmployer, List<Skill> skills) {
         super();
         this.employer = anEmployer;
         this.skills = skills;
@@ -35,11 +36,11 @@ public class Job extends AbstractEntity{
         this.employer = employer;
     }
 
-    public String getSkills() {
+    public List<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(String skills) {
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
 }

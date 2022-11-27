@@ -18,11 +18,9 @@ public class Employer extends AbstractEntity {
     @Size(max = 80)
     private String location;
 
-    @OneToMany ()
-    @JoinColumn
+    @OneToMany
+    @JoinColumn (name = "employer_id")
     private final List<Job> jobs = new ArrayList<>();
-
-    //Recall that this annotation needs a name parameter.
 
     public Employer() {
     }

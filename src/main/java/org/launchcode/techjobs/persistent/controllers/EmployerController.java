@@ -42,7 +42,6 @@ public class EmployerController {
         return "redirect:";
     }
 
-    //seems to be the problem here properly displaying in the form
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
