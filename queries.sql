@@ -3,12 +3,12 @@
 
 -- Part 2: Test it with SQL
 
---write a query to list the names of the employers in St. Louis City.
-
---SELECT name FROM employer WHERE (location = "St. Louis City")
+SELECT name FROM employer WHERE (location = "St. Louis City")
 
 -- Part 3: Test it with SQL
 
---DROP TABLE `techjobs`.`job`;
+DROP TABLE `techjobs`.`job`;
 
 -- Part 4: Test it with SQL
+
+SELECT skill.name FROM skill INNER JOIN job ON skill.id ORDER BY skill.name ASC;
