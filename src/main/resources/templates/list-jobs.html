@@ -10,29 +10,41 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <table class="job-listing">
-        <tr th:each="job : ${jobs}">
-            <td>
-                <p>
-                    Job Id:
-                    <a th:href="@{'/view/' + ${job.id}}" th:text="${job.id}"></a>
-                </p>
-                <p th:text="${'Name: ' + job.name}"></p>
-                <p>
-                    Employer:
-                    <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>
-                </p>
-                <p>
-                    Skills:
-                    <ul th:each="skill : ${job.skills}">
-                        <li>
-                            <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
-                        </li>
-                    </ul>
-                </p>
-            </td>
-        </tr>
-    </table>
+<!--    <table class="job-listing">-->
+<!--        <tr th:each="job : ${jobs}">-->
+<!--            <td>-->
+<!--                <p>-->
+<!--                    Job Id:-->
+<!--                    <a th:href="@{'/view/' + ${job.id}}" th:text="${job.id}"></a>-->
+<!--                </p>-->
+<!--                <p th:text="${'Name: ' + job.name}"></p>-->
+<!--                <p>-->
+<!--                    Employer:-->
+<!--                    <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Skills:-->
+<!--                    <ul th:each="skill : ${job.skills}">-->
+<!--                        <li>-->
+<!--                            <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </p>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
+    <th:block th:each="job : ${jobs}">
+        <table class="job-listing">
+
+            <tr><td><a th:href="@{'/view/' + ${job.id}}">ID</a></td><td th:text="${job.id}"></td></tr>
+            <tr><td>Name</a> </td><td th:text="${job.name}"></td></tr>
+            <tr><td><a th:href="@{/employers/view/}"> Employer</a> </td><td th:text="${job.employer.name}"></td></tr>
+
+            <tr><td>Skills</td> <td><a th:each="skill : ${job.skills}" th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}+ '     '"></a></td></tr>
+
+        </table>
+    </th:block>
 
 </div>
 
