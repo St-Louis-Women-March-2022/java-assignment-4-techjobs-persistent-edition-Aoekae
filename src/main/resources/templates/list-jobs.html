@@ -34,17 +34,7 @@
 <!--        </tr>-->
 <!--    </table>-->
 
-    <th:block th:each="job : ${jobs}">
-        <table class="job-listing">
-
-            <tr><td><a th:href="@{'/view/' + ${job.id}}">ID</a></td><td th:text="${job.id}"></td></tr>
-            <tr><td>Name</a> </td><td th:text="${job.name}"></td></tr>
-            <tr><td> Employer </td><td><a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a></td></tr>
-
-            <tr><td>Skills</td> <td><a th:each="skill : ${job.skills}" th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}+ '     '"></a></td></tr>
-
-        </table>
-    </th:block>
+    <th:block th:replace="fragments :: list-jobs"></th:block>
 
 </div>
 

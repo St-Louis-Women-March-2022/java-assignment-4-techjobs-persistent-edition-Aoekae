@@ -11,4 +11,8 @@ DROP TABLE `techjobs`.`job`;
 
 -- Part 4: Test it with SQL
 
-SELECT skill.name FROM skill INNER JOIN job ON skill.id ORDER BY skill.name ASC;
+SELECT skill.name
+FROM skill
+INNER JOIN job_skills ON job_skills.skills_id = skill.id
+WHERE skills_id IS NOT NULL
+ORDER BY skill.name ASC;
